@@ -4,17 +4,19 @@
  */
 package Janelas;
 
+import Model.ProdutoTableModel;
+
 /**
  *
  * @author william.flima4
  */
 public class CadastroProduto extends javax.swing.JFrame {
+    ProdutoTableModel modelo = new ProdutoTableModel();
 
-    /**
-     * Creates new form CadastroProduto
-     */
+    
     public CadastroProduto() {
         initComponents();
+        jTProdutos.setModel(modelo);
         
         
     }
@@ -43,7 +45,7 @@ public class CadastroProduto extends javax.swing.JFrame {
         jBAlterar = new javax.swing.JButton();
         jBExcluir = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTTabela = new javax.swing.JTable();
+        jTProdutos = new javax.swing.JTable();
 
         jButton1.setText("jButton1");
 
@@ -149,7 +151,7 @@ public class CadastroProduto extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTTabela.setModel(new javax.swing.table.DefaultTableModel(
+        jTProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -160,7 +162,7 @@ public class CadastroProduto extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTTabela);
+        jScrollPane2.setViewportView(jTProdutos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -245,8 +247,8 @@ public class CadastroProduto extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTDescricao;
+    private javax.swing.JTable jTProdutos;
     private javax.swing.JTextField jTQuantidade;
-    private javax.swing.JTable jTTabela;
     private javax.swing.JTextField jTValor;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
