@@ -5,6 +5,7 @@
 package Janelas;
 
 import Model.ProdutoTableModel;
+import Objetos.Produto;
 
 /**
  *
@@ -17,6 +18,7 @@ public class CadastroProduto extends javax.swing.JFrame {
     public CadastroProduto() {
         initComponents();
         jTProdutos.setModel(modelo);
+        this.setLocationRelativeTo(null);
         
         
     }
@@ -88,6 +90,11 @@ public class CadastroProduto extends javax.swing.JFrame {
 
         jBCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jBCadastrar.setText("Cadastrar");
+        jBCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCadastrarActionPerformed(evt);
+            }
+        });
 
         jBAlterar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jBAlterar.setText("Alterar");
@@ -99,6 +106,11 @@ public class CadastroProduto extends javax.swing.JFrame {
 
         jBExcluir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jBExcluir.setText("Excluir");
+        jBExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBExcluirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -162,6 +174,11 @@ public class CadastroProduto extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTProdutos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTProdutosMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTProdutos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -199,6 +216,36 @@ public class CadastroProduto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTValorActionPerformed
 
+    private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
+        Produto p = new Produto();
+        p.setDescricao(jTDescricao.getText());
+        p.setQuantidade(Integer.parseInt(jTQuantidade.getText()));
+        p.setValor(Double.valueOf(jTValor.getText().replace(",", ".")));
+        modelo.addLinha(p);
+        limpaCampos();
+    }//GEN-LAST:event_jBCadastrarActionPerformed
+
+    private void jBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirActionPerformed
+        if (jTProdutos.getSelectedRow() != -1){
+            modelo.removeLinha(jTProdutos.getSelectedRow());
+        }
+    }//GEN-LAST:event_jBExcluirActionPerformed
+
+    private void jTProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTProdutosMouseClicked
+        if (jTProdutos.getSelectedRow() != -1){
+            Produto p = modelo.pegaDadosLinha(jTProdutos.getSelectedRow());
+            jTDescricao.setText(p.getDescricao());
+            jTQuantidade.setText(String.valueOf(p.getQuantidade()));
+            jTValor.setText(String.valueOf(p.getValor()));
+        }
+    }//GEN-LAST:event_jTProdutosMouseClicked
+
+    public void limpaCampos(){
+        jTDescricao.setText("");
+        jTQuantidade.setText("");
+        jTValor.setText("");
+    }
+   
     /**
      * @param args the command line arguments
      */
@@ -252,4 +299,6 @@ public class CadastroProduto extends javax.swing.JFrame {
     private javax.swing.JTextField jTValor;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+   
 }
