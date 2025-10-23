@@ -18,6 +18,7 @@ public class CadastroProduto extends javax.swing.JFrame {
     public CadastroProduto() {
         initComponents();
         jTProdutos.setModel(modelo);
+        modelo.recarregaTabela();
         this.setLocationRelativeTo(null);
         
         
