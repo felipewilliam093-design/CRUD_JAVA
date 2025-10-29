@@ -211,9 +211,27 @@ public class CadastroProduto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
-        // TODO add your handling code here:
+        if (jTProdutos.getSelectedRow() != -1){
+            modelo.setValueAt(jTDescricao.getText(), jTProdutos.getSelectedRow(), 0);
+            modelo.setValueAt(jTQuantidade.getText(), jTProdutos.getSelectedRow(), 1);
+            modelo.setValueAt(jTValor.getText(), jTProdutos.getSelectedRow(), 2);
+            
+            Produto p = modelo.pegaDadosLinha(jTProdutos.getSelectedRow());
+            ProdutoDAO dao = new ProdutoDAO();
+            dao.update(p);
+            limpaCampos();
+            modelo.recarregaTabela();
+            
+        }
     }//GEN-LAST:event_jBAlterarActionPerformed
 
+    private void LimpaCampos(){
+        jTDescricao.setText("");
+        jTQuantidade.setText("");
+        jTValor.setText("");
+    }
+    
+    
     private void jTValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTValorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTValorActionPerformed
