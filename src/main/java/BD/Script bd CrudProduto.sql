@@ -19,3 +19,13 @@ ALTER TABLE tbl_produto
 insert into tbl_produto (descricao, valor, quantidade)
 values
 ('Arroz', 2.50, 4);
+
+create table tbl_usuarios(
+id int auto_increment primary key,
+nome varchar(80) not null,
+login varchar(50) not null,
+senha varchar(255) not null,
+tipo varchar(10) not null
+);
+
+
